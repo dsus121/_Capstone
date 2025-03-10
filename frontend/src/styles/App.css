@@ -1,0 +1,19 @@
+body {
+  background-color: #2B1D0E !important; /* Almost-black */
+  color: #F3EAC2 !important; /* Vanilla */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #9C6644 !important; /* Mocha */
+}
+
+.navbar-brand, .nav-link {
+  color: #F3EAC2 !important; /* Vanilla */
+}
+
+.nav-link:hover {
+  color: #F97F51 !important; /* Deep red */
+}

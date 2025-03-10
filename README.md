@@ -1,5 +1,27 @@
 # CAPSTONE - [subtitle]
-CP 325.9: Capstone Completion
+
+## Frontend Setup
+- created a new folder on my local machine
+- created a new repository on github
+- through the terminal ran npm create vite@latest
+- cd cjk_v1 (changed directory to get into the project)
+- npm install
+- npm run dev (ctrl+click to open the project in the browser)
+- removed all unnecessary boilerplate code
+- restructured to separte frontend from backend, created the appropriate skeleton
+
+
+## Backend Setup
+1. Installed the following using npm:
+- express: Backend framework for routing and handling requests.
+- mongoose: Object Data Modeling (ODM) library for MongoDB.
+- cors: Middleware to manage Cross-Origin Resource Sharing.
+- dotenv: For loading environment variables from a .env file.
+- validator: To validate user inputs (e.g., emails).
+- bcrypt: To hash passwords securely.
+- jsonwebtoken: For generating and verifying authentication tokens.
+
+2. 
 
 ## Introduction
 This document will remind you of the requirements of the course **Capstone Project (CP)** and give you final tasks to work towards for its completion.
