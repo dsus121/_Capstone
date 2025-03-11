@@ -1,37 +1,74 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';  // For password hashing
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs"; // For password hashing
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  causes: [
-    { 
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    profile: {
+      firstName: { type: String, default: "", match: /^[a-zA-Z]+$/ }, // added regex
+      lastName: { type: String, default: "", match: /^[a-zA-Z]+$/ },
+      avatarURL: { type: String, default: "" }, // save for later
+    },
+    causes: [
+      {
+        id: { type: String, required: true },
+        name: {
+          type: String,
+          enum: [
+            "Health",
+            "Education",
+            "Environment",
+            "Animal Welfare",
+            "Community",
+            "Other",
+          ],
+          required: true,
+        },
+        description: { type: String, default: "" },
+      },
+    ],
+    paymentProcessor: {
       type: String,
-      enum: ['Health', 'Education', 'Environment', 'Animal Welfare', 'Community', 'Other'], // Example causes
-    }
-  ],
-  paymentProcessor: { 
-    type: String, 
-    enum: ['Stripe', 'PayPal', 'Other'],  
+      enum: ["Stripe", "PayPal", "Other"],
+    },
+    paymentDetails: {
+      processorName: { type: String }, // Stripe, PayPal, etc.
+      processorData: { type: mongoose.Schema.Types.Mixed },
+    },
+    donationHistory: [
+      {
+        amount: { type: Number, required: true },
+        date: { type: Date, default: Date.now },
+        causeId: { type: String, required: true },
+        causeName: { type: String, required: true },
+      },
+    ],
+
+    cookiejar: {
+      fundsAvailable: { type: Number, default: 0 }, // Store the available balance
+      fundingHistory: [
+        {
+          source: { type: String, required: true }, // E.g., Bank account, card, etc.
+          amount: { type: Number, required: true }, // Amount added to cookiejar
+          dateTime: { type: Date, default: Date.now }, // Date and time of funding
+        },
+      ],
+    },
+    preferences: {
+      notifications: { type: Boolean, default: true },
+      theme: { type: String, default: "light" }, // UI preferences (e.g., dark mode)
+    },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
   },
-  paymentDetails: {
-    processorName: { type: String },   // Stripe, PayPal, etc.
-    processorData: { type: mongoose.Schema.Types.Mixed },  // store payment processor-specific data here
-  },
-  donationHistory: [
-    {
-      amount: { type: Number, required: true },
-      date: { type: Date, default: Date.now },
-      cause: { type: String, required: true },
-    }
-  ],
-  cookieJarBalance: { type: Number, default: 0 },  // store the amount of money in the cookie jar
-}, { timestamps: true });
+  { timestamps: true }
+);
 
 // authentication -- password hashing middleware
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
   try {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
@@ -42,10 +79,10 @@ userSchema.pre('save', async function(next) {
 });
 
 // compare passwords function
-userSchema.methods.comparePassword = async function(candidatePassword) {
+userSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
