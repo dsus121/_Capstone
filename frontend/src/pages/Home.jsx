@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
+useNavigate
+
 const Home = () => {
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/signup')
+    };
+
   return (
     <div className="container mt-5">
       <h1>What is it?</h1>
@@ -21,7 +32,8 @@ const Home = () => {
       className="btn btn-primary"
       style={{ backgroundColor: "var(--cream)", 
                color: "var(--chocolate)",
-               border: "var(--gold)" }}>Let's get this thing going!</button>
+               border: "var(--gold)" }}
+      onClick={handleClick}>Let's get this thing going!</button>
     </div>
   );
 };
