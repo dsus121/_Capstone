@@ -17,23 +17,16 @@ h2, h3, h4, h5, h6, p {
   color: var(--mocha-mousse);
 }
 
-/* Override the primary button background color */
-.custom-btn-primary {
-  background-color: #ff6347 !important; /* Use your desired color (e.g., tomato red) */
-  border-color: #ff6347 !important; /* Matching border color */
-  color: white !important; /* Text color */
+.btn-primary {
+  background-color: var(--cream) !important;
+  color: var(--chocolate) !important;
+  border-color: var(--gold) !important;
 }
 
-/* Optional: Change hover state */
-.custom-btn-primary:hover {
-  background-color: #ff4500 !important; /* Darker shade on hover */
-  border-color: #ff4500 !important;
-}
-
-button {
+/* button {
   color: var(--frosting);
   background-color: var(--mocha-mousse);
-  }
+  } */
 
 
 .navbar-custom {

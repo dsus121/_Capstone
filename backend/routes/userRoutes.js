@@ -3,9 +3,17 @@ import express from 'express';
 const router = express.Router(); // new instance of express router
 
 // define routes
-// router.post('/register', (req, res) => {
-//     res.send('Register a user');
-//   });;  // register a user
+router.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  try {
+    const newUser = new User({ username, email, password });
+    await newUser.save();
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error registering user', error });
+  }
+});
 
 router.get('/users', (req, res) => {
     res.send('Get all users');

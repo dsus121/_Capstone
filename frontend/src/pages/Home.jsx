@@ -30,9 +30,6 @@ const Home = () => {
         giving, and emotional wellness.</p>
       <button 
       className="btn btn-primary"
-      style={{ backgroundColor: "var(--cream)", 
-               color: "var(--chocolate)",
-               border: "var(--gold)" }}
       onClick={handleClick}>Let's get this thing going!</button>
     </div>
   );
