@@ -1,18 +1,17 @@
 # CAPSTONE - [subtitle]
 
 ## Frontend Setup
-- created a new folder on my local machine
-- created a new repository on github
-- through the terminal ran npm create vite@latest
-- cd cjk_v1 (changed directory to get into the project)
-- npm install
-- npm run dev (ctrl+click to open the project in the browser)
-- removed all unnecessary boilerplate code
-- restructured to separte frontend from backend, created the appropriate skeleton
-
+1. Created a new folder on my local machine.
+2. Created a new repository on GitHub.
+3. Ran `npm create vite@latest` in the terminal.
+4. Used `cd cjk_v1` (changed directory to get into the project).
+5. Ran `npm install`.
+6. Ran `npm run dev` (CTRL+click to open the project in the browser).
+7. Removed all unnecessary boilerplate code.
+8. Restructured to separate frontend from backend, creating the appropriate skeleton. 
 
 ## Backend Setup
-1. Installed the following using npm:
+1. Installed the following using npm --
 - express: Backend framework for routing and handling requests.
 - mongoose: Object Data Modeling (ODM) library for MongoDB.
 - cors: Middleware to manage Cross-Origin Resource Sharing.
@@ -21,46 +20,34 @@
 - bcrypt: To hash passwords securely.
 - jsonwebtoken: For generating and verifying authentication tokens.
 
-2. 
+2. Set Up the Project Structure
+3. Set Up .env File
+4. Create the Express Server (server.js)
+5. Set Up Mongoose Models
+6. Set Up Routes (Optional)
+7. Test the Server
+ 
 
 ## Introduction
-This document will remind you of the requirements of the course **Capstone Project (CP)** and give you final tasks to work towards for its completion.
+[ what does this app do? ]
 
 ## Capstone Objective
 Create a full-stack web application using **MongoDB, Express, React, and Node (MERN).**
 
-## Timeline
-As the course progressed, you were given incremental assignments that challenged you to integrate the content you have learned into your capstone project, pushing it closer to completion over time.
-
-At each stage of your project, you have witnessed your own growth through the application’s progress. Hopefully, both you and your application have embraced change, persevered through the struggles, and done some try/catching when there was an exception to be handled.
-
-Now that you have reached the final days of the course, there will be eight days of dedicated project time for final tasks. You have made it to the end of the race—now it is time to cross the finish line!
-
-The complete application is due by **11:59pm on submission day, following the class time zone.**
+## Deadline
+The complete application is due by **11:59pm on 03/20/2025, following the class time zone.**
 
 ## Submission
-When your project is finally complete, submit the link to your completed assessment using the **Start Assignment** button on the assignment page in Canvas.
+Submit the GitHub link on Canvas.
 
-Your submission should include:
-- A GitHub link to the repository for your completed project.
-
-You will also be given the opportunity to present your project to guests, instructors, and/or a Talent Advocate Manager (not the class) upon completion. Lean into this opportunity to become accustomed to speaking about your work, both from a technical and non-technical perspective.
+-------------------------------------------------------------
 
 ### Your presentation should include:
 1. A demonstration of the application.
 2. An overview of the challenges you endured, and how you handled them.
 3. A short question-and-answer period.
 
-Your instructor will schedule practice presentations throughout the development phase.
-
-## Instructions
-This final assignment is a reminder to double-check everything you have done so far and finish any remaining tasks over the next eight days. Be sure to reference the requirements outlined below to ensure your project meets the technical criteria outlined.
-
-Your project vision and its implementation likely changed substantially from the planning phase many weeks ago. Check in again with your instructor to make sure that you are on pace for success by the end of this final project phase.
-
 ## Finishing Up
-Reference your original project plan and any notes you have made for yourself since then. Ensure that you have time to complete all of the tasks you outlined for yourself. Prioritize well, and if you cannot finish everything, decide what is most important.
-
 As you finish building your application, ask yourself the following questions:
 - Did you deliver a project that met all of the technical requirements?
 - Given what the class has covered, did you build something reasonably complex?
@@ -70,19 +57,7 @@ As you finish building your application, ask yourself the following questions:
 - Did you provide an appropriate level of comments?
 - Did you try to deploy your application to a public URL as a personal stretch goal?
 
-Lastly, **congratulations!** You have come incredibly far in a very short period of time. Be proud.
-
----
-
-## Requirements and Rubrics
-These requirements are intended to give you as much creative freedom as possible while still showcasing the skills gained during your technical learning journey.
-
-# Requirements
-Your project folder should be named as follows for submission:
-`LastName_FirstName_ProjectName_Capstone`
-
-
-# Grading Rubric
+# Requirements / Grading Rubric
 
 ## (20%) Project Structure, Standardization, and Convention
 

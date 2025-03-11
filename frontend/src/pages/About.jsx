@@ -4,8 +4,8 @@ const About = () => {
   return (
     <div className="container mt-5">
       <h1>About Us</h1>
-      <p>This is the About page.</p>
-    </div>
+      <p>Two humans who believe in the power of giving, the transcendence of hope, and the deliciousness of cookies.</p>
+      </div>
   );
 };
 
