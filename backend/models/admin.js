@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs"; // For password hashing
+import mongoose from "mongoose"
+import bcrypt from "bcryptjs"
 
 const adminSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },

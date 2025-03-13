@@ -23,7 +23,7 @@ const SignUp = () => {
       try {
         // use local storage for testing
         localStorage.setItem('user', JSON.stringify(formData));
-        navigate('/user-dashboard');
+        navigate('/userdashboard');
       } catch (error) {
         console.error('Error:', error);
       }

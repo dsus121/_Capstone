@@ -1,34 +1,43 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
-const SignIn = () => {
-const navigate = useNavigate();
+const SignIn = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+      email: '',
+      password: '',
+    });
+    const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value,
+      [id]: value.trim(),
     }));
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     try {
-      // for development, check the stored user data in local storage
-      const storedUser = JSON.parse(localStorage.getItem('user'));
-      if (storedUser && storedUser.email === formData.email && storedUser.password === formData.password) {
-        navigate('/user-dashboard');
-      } else {
-        alert('Invalid email or password');
-      }
-    } catch (error) {
-      console.error('Error:', error);
+      const response = await fetch("http://localhost:5173/login", {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(formData),
+      });
+
+    const data = await response.json();
+    if (response.ok) {
+      console.log("Login success:", data);
+      setIsLoggedIn(true);
+      navigate('/userdashboard');
+    } else {
+      alert(data.message || 'Invalid email or password');
     }
-  };
+  } catch (error) {
+    console.error("Error during login:", error);
+    alert("An error occurred. Please try again later.");
+  }
+};
 
   return (
     <div className="container mt-5">
@@ -44,7 +53,7 @@ const navigate = useNavigate();
             onChange={handleChange}
             required
           />
-        </div>
+        </div>test@testing.org
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
           <input

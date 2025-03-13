@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema(
     paymentProcessor: {
       type: String,
       enum: ["Stripe", "PayPal", "Other"],
+      default: "Other"
     },
     paymentDetails: {
       processorName: { type: String }, // Stripe, PayPal, etc.
@@ -39,6 +40,7 @@ const userSchema = new mongoose.Schema(
     },
     donationHistory: [
       {
+        transactionId: { type: String, required: true },
         amount: { type: Number, required: true },
         date: { type: Date, default: Date.now },
         causeId: { type: String, required: true },
@@ -74,6 +76,7 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, salt);
     next();
   } catch (error) {
+    console.error("Password hashing error:", error);
     next(error);
   }
 });

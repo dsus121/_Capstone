@@ -1,4 +1,4 @@
-# CAPSTONE - [subtitle]
+# CAPSTONE - Cookie Jar Karma (CJK)
 
 ## Frontend Setup
 1. Created a new folder on my local machine.
@@ -29,17 +29,17 @@
  
 
 ## Introduction
-[ what does this app do? ]
+Cookie Jar Karma is a micro-donation platform designed to allow individuals to make small contributions to charitable causes, aiming to help them alleviate guilt from everyday actions.
 
 ## Capstone Objective
 Create a full-stack web application using **MongoDB, Express, React, and Node (MERN).**
 
 ## Deadline
-The complete application is due by **11:59pm on 03/20/2025, following the class time zone.**
+The complete application is due by **11:59pm on 03/19/2025.**
 
 ## Submission
-Submit the GitHub link on Canvas.
-
+Submit the <a href="https://github.com/dsus121/_Capstone">GitHub link</a> on Canvas.
+https://github.com/dsus121/_Capstone
 -------------------------------------------------------------
 
 ### Your presentation should include:
