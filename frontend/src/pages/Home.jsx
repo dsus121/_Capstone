@@ -1,14 +1,25 @@
-import { useNavigate } from "react-router-dom";
-
-useNavigate
+import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // track login status
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    // Check if the user is logged in and persist the state
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loggedIn)
 
-    const handleClick = () => {
-        navigate('/signup')
-    };
+    if (loggedIn) {
+      console.log('User is logged in');
+    } else {
+      console.log('User is not logged in');
+    }
+  }, []); // Runs once when the component mounts
+
+  const handleClick = () => {
+    navigate('/signup')
+};
 
   return (
     <div className="container mt-5">
@@ -28,9 +39,14 @@ const Home = () => {
         alleviate personal guilt. Through small acts of
         kindness, Cookie Jar Karma promotes a cycle of positive behavior,
         giving, and emotional wellness.</p>
-      <button 
-      className="btn btn-primary"
-      onClick={handleClick}>Let's get this thing going!</button>
+
+        {/* conditionally render the button */}
+        {!isLoggedIn && (
+          <button 
+          className="btn btn-primary"
+          onClick={handleClick}>Let's get this thing going!</button> 
+        )}
+      
     </div>
   );
 };

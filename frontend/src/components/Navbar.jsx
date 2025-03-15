@@ -9,7 +9,7 @@ const NavbarComponent = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const handleLogout = () => {
     // wipe out user from local storage and update the state
-    localStorage.removeItem('user');
+    localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
     navigate('/'); // redirect to Home
     console.log(localStorage.getItem('user')); // check the user state

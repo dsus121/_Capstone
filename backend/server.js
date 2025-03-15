@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 });
 
+// handle undefined routes
+app.use((req, res) => {
+    res.status(404).json({ message: `Route ${req.originalUrl} not found` });
+  });
+
 // start the server
 app.listen(port, () => {
     console.log(`Server is reciprocating on port ${port}`);

@@ -6,12 +6,19 @@ const UserDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // check if the user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+      navigate('/signin'); // redirect to signin page if not logged in
+      return;
+    }
+
     // retrieve user data from local storage
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
-        navigate('/signup') // redirect the unauthorized user
+        navigate('/signup') // redirect if no user data is found
     }
   }, [navigate]);
 
@@ -22,8 +29,7 @@ const UserDashboard = () => {
   return (
       <div className="container mt-5">
       <h1>User Dashboard</h1>
-      <p>Welcome, {user.username}!</p>
-      <p>Email: {user.email}</p>
+      <p>Welcome, {user.email}!</p>
         <p>{`This is where the user can take a quiz to find out which causes will best 
             help alleviate their guilt. 
             Add functionality to ignore.`}</p>

@@ -1,47 +1,54 @@
-import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const SignIn = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-      email: '',
-      password: '',
-    });
-    const navigate = useNavigate();
+    email: '',
+    password: '',
+  });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value.trim(),
+      [id]: value,
     }));
   };
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5173/login", {
+      const response = await fetch('http://localhost:5013/api/users/signin', {
         method: 'POST',
-        headers: {"Content-Type": "application/json"},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-    const data = await response.json();
-    if (response.ok) {
-      console.log("Login success:", data);
-      setIsLoggedIn(true);
-      navigate('/userdashboard');
-    } else {
-      alert(data.message || 'Invalid email or password');
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Sign-in successful:', data);
+
+        // Set login state, save user data to localStorage, and navigate to the dashboard
+        setIsLoggedIn(true);
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('user', JSON.stringify(data.user)); // Save user data
+        navigate('/userdashboard');
+      } else {
+        const data = await response.json();
+        setErrorMessage(data.message || 'Invalid email or password.');
+      }
+    } catch (error) {
+      console.error('Error during sign-in:', error);
+      setErrorMessage('An unexpected error occurred.');
     }
-  } catch (error) {
-    console.error("Error during login:", error);
-    alert("An error occurred. Please try again later.");
-  }
-};
+  };
 
   return (
     <div className="container mt-5">
       <h1>Sign In</h1>
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
@@ -53,7 +60,7 @@ const SignIn = ({ setIsLoggedIn }) => {
             onChange={handleChange}
             required
           />
-        </div>test@testing.org
+        </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
           <input
@@ -71,4 +78,4 @@ const SignIn = ({ setIsLoggedIn }) => {
   );
 };
 
-export default SignIn
+export default SignIn;
