@@ -7,13 +7,14 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import ProtectedRoute from './components/ProtectedRoute';
 import UserDashboard from "./pages/userDashboard";
 import AdminDashboard from "./pages/adminDashboard";
+import Quiz from "./pages/Quiz";
 import "./styles/App.css";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    // Initialize the logged-in state from localStorage
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {    // initialize the logged-in state from localStorage
     return localStorage.getItem('isLoggedIn') === 'true';
   });
 
@@ -30,10 +31,24 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/userdashboard"
-        element={isLoggedIn ? <UserDashboard /> : <Navigate to="/signin" />}
-/>        <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/signup" element={<SignUp setIsLoggedIn={setIsLoggedIn} />} />
+        <Route
+          path="/userdashboard"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <UserDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admindashboard"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
     </Router>
   );

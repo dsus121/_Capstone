@@ -30,9 +30,13 @@ const UserDashboard = () => {
       <div className="container mt-5">
       <h1>User Dashboard</h1>
       <p>Welcome, {user.email}!</p>
-        <p>{`This is where the user can take a quiz to find out which causes will best 
-            help alleviate their guilt. 
-            Add functionality to ignore.`}</p>
+      <button
+  className="btn btn-secondary mt-3"
+  onClick={() => navigate("/quiz")}
+>
+  Take the Quiz
+</button>
+        <p>{`Add functionality to ignore.`}</p>
         <p>{`Display cookie jar, cause cookies.
             Display instructions on how to donate to causes.
 

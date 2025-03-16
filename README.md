@@ -1,5 +1,15 @@
 # CAPSTONE - Cookie Jar Karma (CJK)
 
+## Capstone Objective
+Create a full-stack web application using **MongoDB, Express, React, and Node (MERN).**
+
+## Deadline
+The complete application is due by **11:59pm on 03/19/2025.**
+
+## Submission
+Submit the <a href="https://github.com/dsus121/_Capstone">GitHub link</a> on Canvas.
+https://github.com/dsus121/_Capstone
+
 ## Frontend Setup
 1. Created a new folder on my local machine.
 2. Created a new repository on GitHub.
@@ -31,15 +41,7 @@
 ## Introduction
 Cookie Jar Karma is a micro-donation platform designed to allow individuals to make small contributions to charitable causes, aiming to help them alleviate guilt from everyday actions.
 
-## Capstone Objective
-Create a full-stack web application using **MongoDB, Express, React, and Node (MERN).**
 
-## Deadline
-The complete application is due by **11:59pm on 03/19/2025.**
-
-## Submission
-Submit the <a href="https://github.com/dsus121/_Capstone">GitHub link</a> on Canvas.
-https://github.com/dsus121/_Capstone
 -------------------------------------------------------------
 
 ### Your presentation should include:
@@ -61,10 +63,10 @@ As you finish building your application, ask yourself the following questions:
 
 ## (20%) Project Structure, Standardization, and Convention
 
-- [ ] Project is organized into appropriate files and directories, following best practices.
+- [X] Project is organized into appropriate files and directories, following best practices.
 - [ ] Project contains an appropriate level of comments.
-- [ ] Project is pushed to GitHub, and contains a README file that documents the project, including an overall description of the project.
-- [ ] Standard naming conventions are used throughout the project.
+- [X] Project is pushed to GitHub, and contains a README file that documents the project, including an overall description of the project.
+- [X] Standard naming conventions are used throughout the project.
 - [ ] Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
 - [ ] Level of effort displayed in creativity, presentation, and user experience.
 
@@ -72,17 +74,17 @@ As you finish building your application, ask yourself the following questions:
 
 ## (12%) Core JavaScript
 
-- [ ] Demonstrate proper usage of ES6 syntax and tools.
+- [X] Demonstrate proper usage of ES6 syntax and tools.
 - [ ] Use functions and classes to adhere to the DRY principle.
-- [ ] Use Promises and async/await, where appropriate.
-- [ ] Use Axios or fetch to retrieve data from an API.
-- [ ] Use sound programming logic throughout the application.
+- [X] Use Promises and async/await, where appropriate.
+- [X] Use Axios or fetch to retrieve data from an API.
+- [X] Use sound programming logic throughout the application.
 - [ ] Use appropriate exception handling.
 
 
 ## (9%) Database
 
-- [ ] Use MongoDB to create a database for your application. **(5%)**
+- [X] Use MongoDB to create a database for your application. **(5%)**
 - [ ] Apply appropriate indexes to your database collections. **(2%)**
 - [ ] Create reasonable schemas for your data by following data modeling best practices. **(2%)**
 
@@ -90,7 +92,7 @@ As you finish building your application, ask yourself the following questions:
 
 ## (19%) Server
 
-- [ ] Create a RESTful API using Node and Express.
+- [X] Create a RESTful API using Node and Express.
   - *For the purposes of this project, you may forgo the HATEOAS aspect of REST APIs.* **(7%)**
 - [ ] Include API routes for all four CRUD operations. **(5%)**
 - [ ] Utilize the native MongoDB driver or Mongoose to interface with your database. **(5%)**

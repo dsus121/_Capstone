@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const SignUp = () => {
+const SignUp = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -29,7 +29,12 @@ const SignUp = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Sign-up successful:', data);
-        navigate('/userdashboard'); // Redirect to the dashboard
+
+        // Update login state and navigate to the dashboard
+        setIsLoggedIn(true);
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("user", JSON.stringify(data.user)); // Save user data
+        navigate("/userdashboard");
       } else {
         const data = await response.json();
         setErrorMessage(data.message || 'Failed to sign up.');
@@ -40,11 +45,19 @@ const SignUp = () => {
     }
   };
 
+
   return (
     <div className="container mt-5">
       <h1>Sign Up</h1>
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
+        
+    <button
+  className="btn btn-secondary mt-3"
+  onClick={() => navigate("/quiz")}
+>
+  Take the Quiz
+</button>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
           <input
