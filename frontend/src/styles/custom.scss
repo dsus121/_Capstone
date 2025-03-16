@@ -1,0 +1,61 @@
+// HOORAY ... Dawn learned a new thing
+
+// custom palette (sorrell-brown is super close to Mocha Mousse, 2025 Pantone Color of the Year
+$seal-brown: #1d120e;
+$blue-lagoon: #015770;
+$sorrell-brown: #9e7967;
+$shilo: #e6c2b2;
+$solitude: #dadfe5;
+
+// override Bootstrap's variables
+$primary: $sorrell-brown;
+$secondary: $blue-lagoon;
+$success: $blue-lagoon;
+$info: $solitude;
+$warning: $shilo;
+$danger: $seal-brown;
+
+// dark theme settings - likely needs adjusting still
+$body-bg: #252525;        // dark background
+$body-color: #e6e6e6;     // light text
+$dark: $seal-brown;
+$light: $solitude;
+
+// card, modal, and other component backgrounds
+$card-bg: #333333;
+$modal-content-bg: #333333;
+$dropdown-bg: #333333;
+$dropdown-color: #e6e6e6;
+
+// borders
+$border-color: #444444;
+
+// form controls
+$input-bg: #454545;
+$input-color: #e6e6e6;
+$input-border-color: #555555;
+
+
+
+// tables
+$table-bg: #333333;
+$table-color: #e6e6e6;
+$table-border-color: #444444;
+
+// more of those sweet sweet custom color choices
+.navbar-custom {
+  background-color: $sorrell-brown; 
+  color: $solitude;
+}
+
+// import Bootstrap (yes, the @ is the right thing here)
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// additional custom styles
+// .btn-primary {
+//   color: white;
+// }
+
+// .btn-info, .btn-warning {
+//   color: black;
+// }

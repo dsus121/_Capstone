@@ -1,57 +1,23 @@
 @import './colors.css';
 
-/* General body styling */
-body {
+/* body {
   background-color: var(--licorice);
   color: var(--cream);
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+} */
+
+.form-check {
+  margin-left: 10px;
+
 }
 
-h1 {
-  color: var(--cream);
+.form-check-input {
+  margin-right: 10px;
+
 }
 
-h2, h3, h4, h5, h6, p {
-  color: var(--mocha-mousse);
+.form-check-label {
+  margin-left: 10px;
 }
-
-.btn-primary {
-  background-color: var(--cream) !important;
-  color: var(--chocolate) !important;
-  border-color: var(--gold) !important;
-}
-
-/* button {
-  color: var(--frosting);
-  background-color: var(--mocha-mousse);
-  } */
-
-
-.navbar-custom {
-  background-color: var(--mocha-mousse);
-  color: var(--cream) !important;
-}
-
-/* Navbar brand and links color */
-.navbar-custom .navbar-brand, 
-.navbar-custom .nav-link {
-  color: var(--licorice) !important; 
-}
-
-/* Navbar link hover color */
-.navbar-custom .nav-link:hover {
-  color: var(--caput-mortuum) !important; 
-}
-
-/* active Navbar link color */
-.navbar-custom .nav-item.active .nav-link {
-  color: var(--caput-mortuum) !important; 
-}
-
-/* Navbar mobile toggle icon color */
-.navbar-custom .navbar-toggler-icon {
-  background-color: var(--chocolate) !important;
-}
-

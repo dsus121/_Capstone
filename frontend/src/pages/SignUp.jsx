@@ -30,10 +30,10 @@ const SignUp = ({ setIsLoggedIn }) => {
         const data = await response.json();
         console.log('Sign-up successful:', data);
 
-        // Update login state and navigate to the dashboard
+        // update login state and navigate to the dashboard
         setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("user", JSON.stringify(data.user)); // Save user data
+        localStorage.setItem("user", JSON.stringify(data.user)); // save user data
         navigate("/userdashboard");
       } else {
         const data = await response.json();

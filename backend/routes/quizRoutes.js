@@ -5,7 +5,6 @@ import {
   submitQuizResult, 
   getLatestQuizResult 
 } from '../controllers/quizController.js';
-// import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -13,9 +12,9 @@ const router = express.Router();
 router.get('/', getQuiz);
 
 // Submit quiz results (requires authentication)
-router.post('/submit', protect, submitQuizResult);
+router.post('/submit', submitQuizResult);
 
 // Get latest quiz result for the user (requires authentication)
-router.get('/results/latest', protect, getLatestQuizResult);
+router.get('/results/latest', getLatestQuizResult);
 
 export default router;

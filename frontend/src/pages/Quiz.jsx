@@ -10,7 +10,7 @@ const Quiz = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Fetch quiz data
+  // fetch quiz data
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
@@ -22,9 +22,9 @@ const Quiz = () => {
         }
 
         const data = await response.json();
-        setQuiz(response.data);
-        // Initialize selectedAnswers array with null values for each question
-        setSelectedAnswers(new Array(response.data.questions.length).fill(null));
+        setQuiz(data);
+        // initialize selectedAnswers array with null values for each question
+        setSelectedAnswers(new Array(data.questions.length).fill(null));
         setLoading(false);
       } catch (err) {
         setError('Failed to load quiz data');
@@ -36,14 +36,14 @@ const Quiz = () => {
     fetchQuiz();
   }, []);
 
-  // Handle option selection
+  // handle option selection
   const handleOptionSelect = (option) => {
     const newSelectedAnswers = [...selectedAnswers];
     newSelectedAnswers[currentQuestionIndex] = option;
     setSelectedAnswers(newSelectedAnswers);
   };
 
-  // Handle navigation between questions
+  // handle navigation between questions
   const goToNextQuestion = () => {
     if (currentQuestionIndex < quiz.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -56,10 +56,10 @@ const Quiz = () => {
     }
   };
 
-// Submit quiz
+// submit quiz
 const handleSubmit = async () => {
     try {
-      // Calculate scores based on selected options
+      // calculate scores based on selected options
       const answers = quiz.questions.map((question, index) => {
         let scoreEarned = 0;
         if (selectedAnswers[index] === 'A') {
@@ -78,39 +78,53 @@ const handleSubmit = async () => {
         };
       });
 
-      // Calculate total score
+      // calculate total score
       const totalScore = answers.reduce((sum, answer) => sum + answer.scoreEarned, 0);
 
-      // Prepare result object
+      // prepare result object
       const quizResult = {
-        quizId: quiz._id,
+        quizId: quiz._id || quiz.id,
         answers,
         totalScore,
         completedAt: new Date()
       };
 
-      // Submit to backend using fetch instead of axios
+      console.log('Submitting quiz result:', quizResult); 
+      
+      // submit to backend 
       const response = await fetch('http://localhost:5013/api/quiz/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(quizResult),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit quiz');
-      }
+    // get the full response text for debugging (oh ho this is handy)
+    const responseText = await response.text();
+    console.log('Response status:', response.status);
+    console.log('Response text:', responseText);
 
-      const result = await response.json();
-
-      // Navigate to results page with data
-      navigate('/quiz-results', { 
-        state: { quizResult }
-      });
-    } catch (err) {
-      setError('Failed to submit quiz');
-      console.error(err);
+    if (!response.ok) {
+      throw new Error(`Failed to submit quiz: ${response.status} ${responseText}`);
     }
-  };
+
+// parse the response as JSON (if it is JSON)
+let result;
+try {
+  result = JSON.parse(responseText);
+} catch (e) {
+  console.warn('Response was not valid JSON:', e);
+  // continue with the flow even if response isn't JSON
+}
+
+// navigate to results page with data
+navigate('/quiz-results', { 
+  state: { quizResult }
+});
+} catch (err) {
+setError(`Failed to submit quiz: ${err.message}`);
+console.error('Error submitting quiz:', err);
+}
+};
   
 
   if (loading) {
@@ -227,7 +241,7 @@ const handleSubmit = async () => {
           </Button>
         ) : (
           <Button 
-            variant="success" 
+            variant="warning" 
             onClick={handleSubmit}
             disabled={selectedAnswers.includes(null)}
           >

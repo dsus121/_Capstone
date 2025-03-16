@@ -67,26 +67,26 @@ As you finish building your application, ask yourself the following questions:
 - [ ] Project contains an appropriate level of comments.
 - [X] Project is pushed to GitHub, and contains a README file that documents the project, including an overall description of the project.
 - [X] Standard naming conventions are used throughout the project.
-- [ ] Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
-- [ ] Level of effort displayed in creativity, presentation, and user experience.
+- [X] Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
+- [X] Level of effort displayed in creativity, presentation, and user experience.
 
 ---
 
 ## (12%) Core JavaScript
 
 - [X] Demonstrate proper usage of ES6 syntax and tools.
-- [ ] Use functions and classes to adhere to the DRY principle.
+- [X] Use functions and classes to adhere to the DRY principle.
 - [X] Use Promises and async/await, where appropriate.
 - [X] Use Axios or fetch to retrieve data from an API.
 - [X] Use sound programming logic throughout the application.
-- [ ] Use appropriate exception handling.
+- [X] Use appropriate exception handling. (or in my case OVERuse)
 
 
 ## (9%) Database
 
 - [X] Use MongoDB to create a database for your application. **(5%)**
 - [ ] Apply appropriate indexes to your database collections. **(2%)**
-- [ ] Create reasonable schemas for your data by following data modeling best practices. **(2%)**
+- [X] Create reasonable schemas for your data by following data modeling best practices. **(2%)**
 
 ---
 
@@ -100,12 +100,12 @@ As you finish building your application, ask yourself the following questions:
 
 ## (35%) Front-End Development
 
-- [ ] Use React to create the application’s front-end. **(10%)**
-- [ ] Use CSS to style the application. **(5%)**
-- [ ] Create at least four different views or pages for the application. **(5%)**
-- [ ] Create some form of navigation that is included across the application’s pages, utilizing React Router for page rendering. **(5%)**
-- [ ] Use React Hooks or Redux for application state management. **(5%)**
-- [ ] Interface directly with the server and API that you created. **(5%)**
+- [X] Use React to create the application’s front-end. **(10%)**
+- [X] Use CSS to style the application. **(5%)** (OR scss!)
+- [X] Create at least four different views or pages for the application. **(5%)**
+- [X] Create some form of navigation that is included across the application’s pages, utilizing React Router for page rendering. **(5%)**
+- [X] Use React Hooks or Redux for application state management. **(5%)**
+- [X] Interface directly with the server and API that you created. **(5%)**
 
 ---
 
@@ -127,6 +127,6 @@ You must complete **ALL** other requirements to receive credit for this section;
 ## (5%) Extra Credit
 
 - [ ] Adhere to Agile principles and the Scrum framework. Perform stand-up sessions (with an instructor) when possible. **(1%)**
-- [ ] Successfully track your project using software similar to Jira. **(1%)**
+- [X] Successfully track your project using software similar to Jira. **(1%)**
 - [ ] Build your application primarily with TypeScript. **(3%)**
 

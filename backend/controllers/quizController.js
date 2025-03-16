@@ -1,9 +1,8 @@
-import asyncHandler from 'express-async-handler';
+import asyncHandler from 'express-async-handler'; // trying to use this to condense try/catches
 import { Quiz, QuizResult } from '../models/quiz.js';
 
-// @desc    Get quiz questions
-// @route   GET /api/quiz
-// @access  Public
+// get quiz questions
+// route = GET /api/quiz
 const getQuiz = asyncHandler(async (req, res) => {
   const quiz = await Quiz.findOne({ isActive: true });
   
@@ -15,9 +14,8 @@ const getQuiz = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Submit quiz result
-// @route   POST /api/quiz/submit
-// @access  Private
+// submit quiz result
+// route =  POST /api/quiz/submit
 const submitQuizResult = asyncHandler(async (req, res) => {
   const { quizId, answers, totalScore } = req.body;
   
@@ -36,9 +34,8 @@ const submitQuizResult = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get user's latest quiz result
-// @route   GET /api/quiz/results/latest
-// @access  Private
+// get user's latest quiz result
+// route =   GET /api/quiz/results/latest
 const getLatestQuizResult = asyncHandler(async (req, res) => {
   const latestResult = await QuizResult.findOne({ 
     // user: req.user._id 

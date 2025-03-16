@@ -11,7 +11,11 @@ import ProtectedRoute from './components/ProtectedRoute';
 import UserDashboard from "./pages/userDashboard";
 import AdminDashboard from "./pages/adminDashboard";
 import Quiz from "./pages/Quiz";
+import QuizResults from './pages/quizResults';
+
 import "./styles/App.css";
+import "./styles/custom.scss"; // Bootstrap custom css 
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {    // initialize the logged-in state from localStorage
@@ -19,7 +23,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    // Sync the logged-in state with localStorage
+    // sync the logged-in state with localStorage
     localStorage.setItem('isLoggedIn', isLoggedIn);
   }, [isLoggedIn]);
 
@@ -35,7 +39,7 @@ const App = () => {
         <Route
           path="/userdashboard"
           element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <ProtectedRoute isLoggedIn={isLoggedIn}> 
               <UserDashboard />
             </ProtectedRoute>
           }
@@ -49,6 +53,7 @@ const App = () => {
           }
         />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/quiz-results" element={<QuizResults />} />
       </Routes>
     </Router>
   );

@@ -29,14 +29,17 @@ const UserDashboard = () => {
   return (
       <div className="container mt-5">
       <h1>User Dashboard</h1>
-      <p>Welcome, {user.email}!</p>
+      <h6>Welcome, {user.email}!</h6>
       <button
   className="btn btn-secondary mt-3"
   onClick={() => navigate("/quiz")}
 >
   Take the Quiz
 </button>
-        <p>{`Add functionality to ignore.`}</p>
+        <p></p>
+        <p>{`* show quiz results`}</p>
+
+        <p>{`* add functionality to ignore the quiz ... a toggle?`}</p>
         <p>{`Display cookie jar, cause cookies.
             Display instructions on how to donate to causes.
 

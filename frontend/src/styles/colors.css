@@ -1,4 +1,7 @@
 /* colors.css */
+
+/* not using this at all since I learned about scss in Bootstrap */
+
 :root {
     --mocha-mousse: #a47864;
     --chocolate: #200c05;
