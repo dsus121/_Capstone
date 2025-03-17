@@ -1,43 +1,132 @@
 import { useEffect, useState } from 'react'
+import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
 
+
 const UserDashboard = () => {
-  const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [hasQuizResults, setHasQuizResults] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // check if the user is logged in
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    if (!isLoggedIn) {
-      navigate('/signin'); // redirect to signin page if not logged in
-      return;
-    }
+    const fetchUserData = async () => {
+      try {
+        // Simple check if user is logged in - modify based on how you track login state
+        const isLoggedIn = localStorage.getItem('user') || sessionStorage.getItem('user');
+        
+        if (!isLoggedIn) {
+          navigate('/login');
+          return;
+        }
 
-    // retrieve user data from local storage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    } else {
-        navigate('/signup') // redirect if no user data is found
-    }
+        // If you store user data in localStorage, parse it
+        try {
+          const userData = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'));
+          setUserData(userData);
+        } catch (e) {
+          console.error("Error parsing user data", e);
+        }
+        
+        // Check if user has taken the quiz before
+        // This could be a simple localStorage flag or from your backend
+        const hasCompletedQuiz = localStorage.getItem('quizCompleted') === 'true';
+        setHasQuizResults(hasCompletedQuiz);
+        
+        setLoading(false);
+      } catch (err) {
+        setError("Error loading dashboard");
+        setLoading(false);
+        console.error(err);
+      }
+    };
+
+    fetchUserData();
   }, [navigate]);
 
-  if (!user) {
-    return <div>Loading...</div>;
+  
+  const handleViewResults = () => {
+    navigate('/quiz-results');
+  };
+
+  const handleTakeQuiz = () => {
+    navigate('/quiz');
+  };
+
+  if (loading) {
+    return (
+      <Container className="my-5">
+        <div className="text-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p className="mt-3">Loading dashboard...</p>
+        </div>
+      </Container>
+    );
   }
+
+  if (error) {
+    return (
+      <Container className="my-5">
+        <Alert variant="danger">
+          {error}. Please try again or contact support.
+        </Alert>
+      </Container>
+    );
+  }
+
+  console.log("Quiz results status:", hasQuizResults);
+
   
   return (
-      <div className="container mt-5">
-      <h1>User Dashboard</h1>
-      <h6>Welcome, {user.email}!</h6>
-      <button
-  className="btn btn-secondary mt-3"
-  onClick={() => navigate("/quiz")}
->
-  Take the Quiz
-</button>
+    <Container className="my-5">
+      <h1 className="mb-4">Welcome, {userData?.email || 'User'}!</h1>
+      
+      <Row className="mb-4">
+        <Col md={6} className="mb-3">
+          <Card className="shadow h-100">
+            <Card.Body>
+              <Card.Title>Guilt Assessment Quiz</Card.Title>
+              <Card.Text>
+                {hasQuizResults 
+                  ? "You've completed the guilt assessment quiz. View your results or take it again to see if your perspective has changed."
+                  : "Take our guilt assessment quiz to understand your relationship with guilt and get personalized insights."}
+              </Card.Text>
+              <div className="d-flex gap-2">
+                {hasQuizResults && (
+                  <Button variant="primary" onClick={handleViewResults}>
+                    View Results
+                  </Button>
+                )}
+                <Button 
+                  variant={hasQuizResults ? "outline-primary" : "primary"} 
+                  onClick={handleTakeQuiz}
+                >
+                  {hasQuizResults ? "Take Quiz Again" : "Take Quiz"}
+                </Button>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+        
+        <Col md={6} className="mb-3">
+          <Card className="shadow h-100">
+            <Card.Body>
+              <Card.Title>Recommended Organizations</Card.Title>
+              <Card.Text>
+                Based on your profile and quiz results, we recommend these organizations that align with your values.
+              </Card.Text>
+              <Button variant="outline-primary">
+                View Recommendations
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <div>
         <p></p>
-        <p>{`* show quiz results`}</p>
 
         <p>{`* add functionality to ignore the quiz ... a toggle?`}</p>
         <p>{`Display cookie jar, cause cookies.
@@ -56,6 +145,8 @@ const UserDashboard = () => {
             Display the total amount of donations so far to CJK.`}
         </p>
       </div>
+      
+</Container>
     );
   };
   

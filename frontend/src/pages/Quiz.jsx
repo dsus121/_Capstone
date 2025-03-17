@@ -89,7 +89,7 @@ const handleSubmit = async () => {
         completedAt: new Date()
       };
 
-      console.log('Submitting quiz result:', quizResult); 
+      // console.log('Submitting quiz result:', quizResult); 
       
       // submit to backend 
       const response = await fetch('http://localhost:5013/api/quiz/submit', {
@@ -101,7 +101,7 @@ const handleSubmit = async () => {
     // get the full response text for debugging (oh ho this is handy)
     const responseText = await response.text();
     console.log('Response status:', response.status);
-    console.log('Response text:', responseText);
+    // console.log('Response text:', responseText);
 
     if (!response.ok) {
       throw new Error(`Failed to submit quiz: ${response.status} ${responseText}`);

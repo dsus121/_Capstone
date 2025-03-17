@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom"
 import { useState } from "react"
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "../ErrorPage";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
   if (!isLoggedIn) {

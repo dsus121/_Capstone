@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Card, Alert, Button, ProgressBar } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import ResultsInterpretation from "../components/ResultsInterpretation";
-import ResultsActionCard from "../components/ResultsActionCard";
+import ResultsInterpretation from "../components/quiz/ResultsInterpretation";
+import ResultsActionCard from "../components/quiz/ResultsActionCard";
 
 const QuizResults = () => {
   const location = useLocation();
@@ -11,28 +11,6 @@ const QuizResults = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    // check if user is logged in
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-
-    // check if results were passed via navigation state
-    if (location.state && location.state.quizResult) {
-      setQuizResult(location.state.quizResult);
-      setLoading(false);
-    } else {
-      // then try to get from localStorage
-      const storedScore = parseInt(localStorage.getItem("quizScore"), 10);
-      if (!isNaN(storedScore)) {
-        setQuizResult({ totalScore: storedScore });
-        setLoading(false);
-      } else {
-        // finally try to fetch from API if neither of the above worked
-        fetchResults();
-      }
-    }
-  }, [location.state]);
 
   const fetchResults = async () => {
     try {
@@ -46,6 +24,18 @@ const QuizResults = () => {
 
       const data = await response.json();
       setQuizResult(data);
+
+      // save the initial quiz result if it's the first one
+      const hasInitialQuiz = localStorage.getItem('initialQuizScore');
+      if (!hasInitialQuiz) {
+        localStorage.setItem('initialQuizScore', data.totalScore);
+        localStorage.setItem('initialQuizDate', new Date().toISOString());
+      }
+
+      // always save the latest quiz result
+      localStorage.setItem('latestQuizScore', data.totalScore);
+      localStorage.setItem('latestQuizDate', new Date().toISOString());
+
       setLoading(false);
     } catch (err) {
       setError("Unable to load quiz results.");
@@ -53,6 +43,53 @@ const QuizResults = () => {
       console.error(err);
     }
   };
+
+
+  useEffect(() => {
+    // check if user is logged in
+  // Check using the same mechanism as the App component
+  const loggedInFlag = localStorage.getItem('isLoggedIn') === 'true';
+  setIsLoggedIn(loggedInFlag);
+  
+  console.log('isLoggedIn set to:', loggedInFlag);
+
+
+    
+        // when quiz is completed, set this 
+        localStorage.setItem('quizCompleted', 'true');
+
+    // check if results were passed via navigation state
+    if (location.state && location.state.quizResult) {
+      setQuizResult(location.state.quizResult);
+
+            // save the initial quiz result if it's the first one
+            const hasInitialQuiz = localStorage.getItem('initialQuizScore');
+            if (!hasInitialQuiz) {
+              localStorage.setItem('initialQuizScore', location.state.quizResult.totalScore);
+              localStorage.setItem('initialQuizDate', new Date().toISOString());
+            }
+            
+            // always save the latest quiz result
+            localStorage.setItem('latestQuizScore', location.state.quizResult.totalScore);
+            localStorage.setItem('latestQuizDate', new Date().toISOString());
+
+      setLoading(false);
+    } else {
+      // try to get latest quiz from localStorage
+      const latestScore = parseInt(localStorage.getItem("latestQuizScore"), 10);
+      if (!isNaN(latestScore)) {
+        setQuizResult({ 
+          totalScore: latestScore,
+          date: localStorage.getItem("latestQuizDate")
+        });
+        setLoading(false);
+      } else {
+        // finally try to fetch from API if the above didn't work
+        fetchResults();
+      }
+    }
+  }, [location.state]);
+
 
   // change the scoring back after testing
   const getScoreInterpretation = (score) => {
@@ -76,7 +113,7 @@ const QuizResults = () => {
   };
 
   const handleSignUp = () => {
-    navigate("/signup");
+    navigate("/signup", { state: { from: "quiz-results" } });
   };
 
   if (loading) {
@@ -121,6 +158,10 @@ const QuizResults = () => {
   const score = quizResult.totalScore;
   const maxScore = 9; // change this back after testing
 
+  // Get initial quiz score for comparison if available
+  const initialScore = parseInt(localStorage.getItem("initialQuizScore"), 10);
+  const hasInitialScore = !isNaN(initialScore) && initialScore !== score;
+
   return (
     <Container className="my-5">
       <h1 className="text-center mb-4">Quiz Results</h1>
@@ -130,12 +171,19 @@ const QuizResults = () => {
           <h2 className="display-4 mb-3">{score} points</h2>
           <h3 className="mb-4">{getScoreInterpretation(score)}</h3>
 
-          <ProgressBar
-            now={(score / maxScore) * 100}
-            label={`${score}/${maxScore}`}
-            className="mb-4"
-            style={{ height: "2rem" }}
+          <ProgressBar 
+            now={(score / maxScore) * 100} 
+            label={`${score}/${maxScore}`} 
+            className="mb-4" 
+            style={{ height: '2rem' }} 
           />
+          
+          {hasInitialScore && (
+            <div className="mt-3 text-muted">
+              <p>Your initial score was: {initialScore} points</p>
+              <p>Change since first quiz: {score - initialScore > 0 ? '+' : ''}{score - initialScore} points</p>
+            </div>
+          )}
         </Card.Body>
       </Card>
 

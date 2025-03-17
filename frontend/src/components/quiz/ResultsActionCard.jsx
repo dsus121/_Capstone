@@ -1,8 +1,11 @@
 import { Card, Button } from 'react-bootstrap';
 
 const ResultsActionCard = ({ isLoggedIn, onSignUp }) => {
-  // only show content and signup button if user is not logged in
-  if (isLoggedIn) {
+  // wasn't loading properly ... adding a console.log
+  console.log("ResultsActionCard - isLoggedIn:", isLoggedIn);
+  
+  // flipping the logic - show the card when NOT logged in
+  if (isLoggedIn === true) {
     return null; // don't render this component at all for logged-in users
   }
 
