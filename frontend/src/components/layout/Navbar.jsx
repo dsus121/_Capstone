@@ -1,6 +1,5 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
