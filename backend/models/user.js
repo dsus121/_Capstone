@@ -2,8 +2,41 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true, trim: true },
     password: { type: String, required: true },
+    
+    // add selected jars - keeping it simple
+    selectedJars: [
+      {
+        causeType: { 
+          type: String,
+          enum: ['Health', 'Education', 'Environment', 'Animal Welfare', 'Community']
+        },
+        organizationId: { 
+          type: String  // store the organization ID from the API
+        },
+        organizationName: { 
+          type: String  // store the name for easier display
+        }
+      }
+    ],
+    
+    // for storing quiz results
+    quizResults: [
+      {
+        score: Number,
+        date: {
+          type: Date,
+          default: Date.now
+        }
+      }
+    ],
+    
+    // simple cookie jar implementation
+    cookieJar: {
+      totalCookies: { type: Number, default: 0 }
+      // will expand this later with distribution across causes
+    }
   },
   { timestamps: true }
 );

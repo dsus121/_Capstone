@@ -6,6 +6,7 @@ import userRoutes from './routes/userRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import connectDB from './config/connectDB.js'
 import quizRoutes from './routes/quizRoutes.js'
+import orgsRoutes from './routes/orgsRoutes.js'
 
 dotenv.config()
 const app = express()
@@ -21,7 +22,8 @@ app.use(cors()) // middleware for handling cross-origin requests
 // routes), which is why it’s a common practice to use '/api' as a base 
 // route in RESTful APIs.
 app.use('/api/users', userRoutes);  // user routes under the "/api" path
-app.use('/api/quiz', quizRoutes); // user quiz
+app.use('/api/quiz', quizRoutes); 
+app.use('/api/organizations', orgsRoutes);
 
 app.use('/api/products', productRoutes);  // product routes 
 

@@ -3,16 +3,19 @@ import userController from '../controllers/userController.js';
 
 const router = express.Router();
 
-// Route: Sign up a new user
+// sign up a new user
 router.post('/signup', userController.registerUser);
 
-// Route: Sign in an existing user
+// sign in an existing user
 router.post('/signin', userController.signInUser);
 
-// Route: Get user dashboard data
+// get user dashboard data
 router.get('/userdashboard', userController.getUserDashboard);
 
-// Route: Get all users (for testing purposes)
+// get all users (for testing, admins at some point)
 router.get('/users', userController.getAllUsers);
+
+// save jars
+router.put('/jars', userController.saveUserJars);
 
 export default router;

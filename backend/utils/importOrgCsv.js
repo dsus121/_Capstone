@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Fix for __dirname in ES modules
+// fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -25,7 +25,7 @@ const importOrgData = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to MongoDB');
     
-    // Create promise to read CSV data
+    // create promise to read CSV data
     const csvReadPromise = new Promise((resolve) => {
       fs.createReadStream(path.join(__dirname, '../../data/CO_nonprofits.csv'))
         .pipe(csv())
@@ -35,19 +35,20 @@ const importOrgData = async () => {
         });
     });
     
-    // Wait for CSV parsing to finish
+    // wait for CSV parsing to finish
     await csvReadPromise;
     console.log(`Read ${results.length} items from CSV`);
     
-    // Clear existing data (optional - remove if you want to keep existing records)
+    // clear existing data (remove if I decide I want to keep existing records)
     await Org.deleteMany({});
     console.log('Existing data cleared');
     
-    // Map CSV data to schema fields with unique placeholder EINs
+    // map CSV data to schema fields with unique placeholder EINs
     let placeholderEinCounter = 1;
     
     const orgDocuments = results.map(item => {
-      // If EIN is missing, generate a unique placeholder
+      // if EIN is missing, generate a unique placeholder
+      // this is the magic that made this script work
       let einValue = item.EIN && item.EIN.trim() !== '' 
         ? item.EIN 
         : `PLACEHOLDER-${placeholderEinCounter++}`;
@@ -67,11 +68,11 @@ const importOrgData = async () => {
     console.log(`Mapped ${orgDocuments.length} organizations`);
     console.log(`Generated ${placeholderEinCounter - 1} placeholder EINs for organizations with missing EIN values`);
     
-    // Handle batch insertion
+    // handle batch insertion
     let successCount = 0;
     let failCount = 0;
     
-    for (let i = 0; i < orgDocuments.length; i++) {
+    for (let i = 0; i < orgDocuments.length; i++) { // gotta love a good ole for loop
       try {
         const org = new Org(orgDocuments[i]);
         await org.save();
