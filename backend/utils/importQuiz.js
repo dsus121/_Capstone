@@ -18,7 +18,7 @@ const importData = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     
-    // Create promise to read CSV data
+    // create promise to read CSV data
     const csvReadPromise = new Promise((resolve) => {
       fs.createReadStream('../../data/quiz_questions.csv')
         .pipe(csv())
@@ -28,10 +28,10 @@ const importData = async () => {
         });
     });
     
-    // Wait for CSV parsing to finish
+    // wait for CSV parsing to finish
     await csvReadPromise;
     
-    // Transform CSV data to match your schema
+    // transform CSV data to match schema
     const questions = results.map(row => ({
       questionNumber: parseInt(row['#']),
       keyword: row['Keyword'],
@@ -44,7 +44,7 @@ const importData = async () => {
       scoreOptionC: parseInt(row['Score - Option C'])
     }));
     
-    // Create quiz object
+    // create quiz object
     const quizData = {
       title: "Guilt Assessment Quiz",
       description: "Answer these questions to assess your guilt responses",
@@ -52,10 +52,10 @@ const importData = async () => {
       isActive: true
     };
     
-    // Clear existing quizzes (optional)
+    // clear existing quizzes
     await QuizModel.deleteMany();
     
-    // Insert new quiz
+    // insert new quiz
     await QuizModel.create(quizData);
     
     console.log('Data imported successfully');
