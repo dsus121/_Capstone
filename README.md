@@ -64,7 +64,7 @@ As you finish building your application, ask yourself the following questions:
 ## (20%) Project Structure, Standardization, and Convention
 
 - [X] Project is organized into appropriate files and directories, following best practices.
-- [ ] Project contains an appropriate level of comments.
+- [X] Project contains an appropriate level of comments.
 - [X] Project is pushed to GitHub, and contains a README file that documents the project, including an overall description of the project.
 - [X] Standard naming conventions are used throughout the project.
 - [X] Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
@@ -95,8 +95,8 @@ As you finish building your application, ask yourself the following questions:
 - [X] Create a RESTful API using Node and Express.
   - *For the purposes of this project, you may forgo the HATEOAS aspect of REST APIs.* **(7%)**
 - [ ] Include API routes for all four CRUD operations. **(5%)**
-- [ ] Utilize the native MongoDB driver or Mongoose to interface with your database. **(5%)**
-- [ ] Include at least one form of user authentication/authorization within the application. **(2%)**
+- [X] Utilize the native MongoDB driver or Mongoose to interface with your database. **(5%)**
+- [X] Include at least one form of user authentication/authorization within the application. **(2%)**
 
 ## (35%) Front-End Development
 

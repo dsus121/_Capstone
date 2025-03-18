@@ -6,7 +6,7 @@ const orgsController = {
   getOrganizationsByCause: asyncHandler(async (req, res) => {
     const { causeType } = req.query;
   
-    console.log('Received causeType:', causeType); // debug log
+    console.log('Received causeType:', causeType); // de🪲 log
   
     if (!causeType) {
       res.status(400);

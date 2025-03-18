@@ -21,3 +21,8 @@
 .form-check-label {
   margin-left: 10px;
 }
+
+/* this isn't changing the color of the select box highlight */
+.Form-Select option {
+  background-color: var(--blue-lagoon);
+}

@@ -98,7 +98,7 @@ const handleSubmit = async () => {
         body: JSON.stringify(quizResult),
       });
 
-    // get the full response text for debugging (oh ho this is handy)
+    // get the full response text for de🪲-ing (oh ho this is handy)
     const responseText = await response.text();
     console.log('Response status:', response.status);
     // console.log('Response text:', responseText);

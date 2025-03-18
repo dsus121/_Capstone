@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
+import JarSelection from '../components/JarSelection';
 
 
 const UserDashboard = () => {
@@ -125,6 +126,8 @@ const UserDashboard = () => {
           </Card>
         </Col>
       </Row>
+
+      <JarSelection />
       <div>
         <p></p>
 
