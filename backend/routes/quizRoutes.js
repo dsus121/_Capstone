@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'express'
 
 import { 
   getQuiz, 
@@ -8,13 +8,13 @@ import {
 
 const router = express.Router();
 
-// Get the quiz
+// get the quiz
 router.get('/', getQuiz);
 
-// Submit quiz results (requires authentication)
+// submit quiz results 
 router.post('/submit', submitQuizResult);
 
-// Get latest quiz result for the user (requires authentication)
+// get latest quiz result for the user 
 router.get('/results/latest', getLatestQuizResult);
 
-export default router;
+export default router

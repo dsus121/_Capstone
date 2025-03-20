@@ -1,4 +1,4 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap'
 
 const ResultsActionCard = ({ isLoggedIn, onSignUp }) => {
   // wasn't loading properly ... adding a console.log

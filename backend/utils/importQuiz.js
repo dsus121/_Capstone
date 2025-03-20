@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { QuizModel } from '../models/quiz.js';
-import csv from 'csv-parser';
-import fs from 'fs';
-import dotenv from 'dotenv';
+import mongoose from 'mongoose'
+import { QuizModel } from '../models/quiz.js'
+import csv from 'csv-parser'
+import fs from 'fs'
+import dotenv from 'dotenv'
 
 dotenv.config({ path: '../.env' });
 const results = [];
@@ -66,4 +66,4 @@ const importData = async () => {
   }
 };
 
-importData();
+importData()

@@ -1,4 +1,4 @@
-import MyDropdown from './MyDropdown';
+import MyDropdown from './MyDropdown'
 
 const OrganizationCard = ({ cause, organizations, selectedOrgs, onSelect }) => {
   return (
@@ -24,4 +24,4 @@ const OrganizationCard = ({ cause, organizations, selectedOrgs, onSelect }) => {
   );
 };
 
-export default OrgCard;
+export default OrgCard

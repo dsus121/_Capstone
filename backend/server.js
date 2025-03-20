@@ -26,7 +26,7 @@ app.use((req, res, next) => {
     next();
   });
 
-// Define API routes
+// define API routes
 app.use('/api/users', userRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/organizations', orgsRoutes);

@@ -1,5 +1,5 @@
-import express from 'express';
-import userController from '../controllers/userController.js';
+import express from 'express'
+import userController from '../controllers/userController.js'
 
 const router = express.Router();
 
@@ -32,4 +32,4 @@ router.put('/:email/jars', (req, res, next) => {
     next();
   }, userController.saveUserJars);
 
-export default router;
+export default router

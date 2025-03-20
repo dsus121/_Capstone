@@ -130,4 +130,4 @@ const SignUp = ({ setIsLoggedIn }) => {
   );
 };
 
-export default SignUp;
+export default SignUp

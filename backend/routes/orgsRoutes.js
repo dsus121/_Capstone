@@ -1,5 +1,5 @@
-import express from 'express';
-import orgsController from '../controllers/orgsController.js'; 
+import express from 'express'
+import orgsController from '../controllers/orgsController.js'
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.post('/', orgsController.addOrganization);
 // delete an organization by ID
 router.delete('/:id', orgsController.deleteOrganization);
 
-export default router;
+export default router

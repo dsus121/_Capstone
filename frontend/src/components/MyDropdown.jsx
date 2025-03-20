@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import './MyDropdown.css';
+import { useState, useRef, useEffect } from 'react'
+import './MyDropdown.css'
 
 const MyDropdown = ({ options, value, onChange, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,4 +66,4 @@ const MyDropdown = ({ options, value, onChange, placeholder }) => {
   );
 };
 
-export default MyDropdown;
+export default MyDropdown

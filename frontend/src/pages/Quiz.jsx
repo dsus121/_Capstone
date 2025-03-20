@@ -253,4 +253,4 @@ console.error('Error submitting quiz:', err);
   );
 };
 
-export default Quiz;
+export default Quiz

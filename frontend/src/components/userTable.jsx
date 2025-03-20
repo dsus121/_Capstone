@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Table, Button, Alert } from "react-bootstrap";
+import { useEffect, useState } from "react"
+import { Table, Button, Alert } from "react-bootstrap"
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
@@ -141,4 +141,4 @@ const UserTable = () => {
   );
 };
 
-export default UserTable;
+export default UserTable

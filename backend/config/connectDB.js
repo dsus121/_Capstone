@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import 'dotenv/config';
+import 'dotenv/config'
 
 
 const connectDB = async () => {
@@ -9,7 +9,7 @@ const connectDB = async () => {
     console.log(`MongoDB connected`);
   } catch (error) {
     console.log('Error: ', error);
-    process.exit(1);  // Exit the process if connection fails
+    process.exit(1);  // exit the process if connection fails
   }
 }
 

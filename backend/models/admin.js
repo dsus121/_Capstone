@@ -21,4 +21,4 @@ const adminSchema = new mongoose.Schema({
 
 
 
-export default Admin;
+export default Admin

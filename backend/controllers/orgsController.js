@@ -1,5 +1,5 @@
-import asyncHandler from 'express-async-handler';
-import Org from '../models/orgs.js'; 
+import asyncHandler from 'express-async-handler'
+import Org from '../models/orgs.js'
 
 const orgsController = {
   // get all organizations
@@ -48,7 +48,7 @@ const orgsController = {
       throw new Error('Organization already exists');
     }
 
-    // Create a new organization
+    // create a new organization
     const newOrg = new Org({
       orgName,
       ein,
@@ -65,7 +65,7 @@ const orgsController = {
     res.status(201).json({ message: 'Organization added successfully', organization: newOrg });
   }),
 
-  // Delete an organization by ID
+  // delete an organization by ID
   deleteOrganization: asyncHandler(async (req, res) => {
     const { id } = req.params;
 
@@ -82,4 +82,4 @@ const orgsController = {
   }),
 };
 
-export default orgsController;
+export default orgsController

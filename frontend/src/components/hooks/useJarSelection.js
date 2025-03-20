@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 // custom hook to handle jar selection logic
 export const useJarSelection = () => {

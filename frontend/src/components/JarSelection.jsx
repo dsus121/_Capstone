@@ -80,7 +80,7 @@ const JarSelection = () => {
                   {organizations[cause.id] ? (
                     <div className="form-container">
                       <MyDropdown
-                        options={organizations[cause.id]?.map(org => ({ // optional chaining
+                        options={organizations[cause.id]?.map(org => ({ // optional chaining helps handle null and undefined
                           value: org._id,
                           label: org.orgName
                         }))}
@@ -115,4 +115,4 @@ const JarSelection = () => {
   );
 };
 
-export default JarSelection;
+export default JarSelection

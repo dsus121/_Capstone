@@ -1,6 +1,6 @@
-import asyncHandler from 'express-async-handler';
-import bcrypt from 'bcrypt';
-import User from '../models/user.js'; // import the Mongoose User model
+import asyncHandler from 'express-async-handler'
+import bcrypt from 'bcrypt'
+import User from '../models/user.js' // import the Mongoose User model
 
 const userController = {
   // get all users
@@ -15,19 +15,19 @@ const userController = {
 
   // update user
   updateUser: asyncHandler(async (req, res) => {
-    const { id } = req.params; // Get the user ID from the URL parameters
-    const { email } = req.body; // Get the new email from the request body
+    const { id } = req.params; // get the user ID from the URL parameters
+    const { email } = req.body; // get the new email from the request body
 
     if (!email) {
       res.status(400);
       throw new Error('Email is required to update the user');
     }
 
-    // Find the user by ID and update the email
+    // find the user by ID and update the email
     const updatedUser = await User.findByIdAndUpdate(
-      id, // The user ID
-      { email }, // The fields to update
-      { new: true, runValidators: true } // Return the updated document and run validation
+      id, // the user ID
+      { email }, // the fields to update
+      { new: true, runValidators: true } // return the updated document and run validation
     );
 
     if (!updatedUser) {
@@ -40,9 +40,9 @@ const userController = {
 
   // delete user
   deleteUser: asyncHandler(async (req, res) => {
-    const { id } = req.params; // Get the user ID from the URL parameters
+    const { id } = req.params; // get the user ID from the URL parameters
 
-    // Find the user by ID and delete them
+    // find the user by ID and delete them
     const deletedUser = await User.findByIdAndDelete(id);
 
     if (!deletedUser) {
@@ -115,7 +115,7 @@ const userController = {
     res.status(200).json({ message: 'User dashboard data retrieved', data: userData });
   }),
 
-  // Save user jars
+  // save user jars
   saveUserJars: asyncHandler(async (req, res) => {
     const { jars } = req.body; // expecting an array of jars in the request body
     const { email } = req.params; // use email from URL parameter
@@ -175,4 +175,4 @@ const userController = {
   }),
 };
 
-export default userController;
+export default userController

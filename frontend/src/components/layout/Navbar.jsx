@@ -46,4 +46,4 @@ const NavbarComponent = ({ isLoggedIn, setIsLoggedIn }) => {
   );
 };
 
-export default NavbarComponent;
+export default NavbarComponent

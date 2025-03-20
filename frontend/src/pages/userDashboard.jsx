@@ -14,7 +14,7 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // Simple check if user is logged in - modify based on how you track login state
+        // simple check if user is logged in - modify based on how you track login state
         const isLoggedIn = localStorage.getItem('user') || sessionStorage.getItem('user');
         
         if (!isLoggedIn) {
@@ -22,7 +22,7 @@ const UserDashboard = () => {
           return;
         }
 
-        // If you store user data in localStorage, parse it
+        // if you store user data in localStorage, parse it
         try {
           const userData = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user'));
           setUserData(userData);
@@ -30,8 +30,8 @@ const UserDashboard = () => {
           console.error("Error parsing user data", e);
         }
         
-        // Check if user has taken the quiz before
-        // This could be a simple localStorage flag or from your backend
+        // check if user has taken the quiz before
+        // this could be a simple localStorage flag or from your backend
         const hasCompletedQuiz = localStorage.getItem('quizCompleted') === 'true';
         setHasQuizResults(hasCompletedQuiz);
         

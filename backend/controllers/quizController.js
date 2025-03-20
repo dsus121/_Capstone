@@ -1,5 +1,5 @@
-import asyncHandler from 'express-async-handler'; // trying to use this to condense try/catches
-import { Quiz, QuizResult } from '../models/quiz.js';
+import asyncHandler from 'express-async-handler' // trying to use this to condense try/catches
+import { Quiz, QuizResult } from '../models/quiz.js'
 
 // get quiz questions
 // route = GET /api/quiz
@@ -53,4 +53,4 @@ export {
   getQuiz,
   submitQuizResult,
   getLatestQuizResult
-};
+}

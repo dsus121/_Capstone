@@ -1,4 +1,4 @@
-import UserTable from '../components/userTable';
+import UserTable from '../components/userTable'
 
 const AdminDashboard = () => {
     return (
@@ -11,4 +11,4 @@ const AdminDashboard = () => {
     );
   };
   
-  export default AdminDashboard;
+  export default AdminDashboard

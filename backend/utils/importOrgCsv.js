@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
-import Org from '../models/orgs.js';
-import csv from 'csv-parser';
-import fs from 'fs';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import mongoose from 'mongoose'
+import Org from '../models/orgs.js'
+import csv from 'csv-parser'
+import fs from 'fs'
+import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 // fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -97,4 +97,4 @@ const importOrgData = async () => {
   }
 };
 
-importOrgData();
+importOrgData()
