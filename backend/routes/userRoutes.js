@@ -12,10 +12,24 @@ router.post('/signin', userController.signInUser);
 // get user dashboard data
 router.get('/userdashboard', userController.getUserDashboard);
 
-// get all users (for testing, admins at some point)
-router.get('/users', userController.getAllUsers);
+// get admin dashboard data
+// router.get('/admindashboard', userController.getAdminDashboard);
 
+// get all users (for testing, admins at some point)
+router.get('/', userController.getAllUsers);
+
+// edit user (specifically email in this case)
+router.put('/:id', userController.updateUser);
+
+// delete user
+router.delete('/:id', userController.deleteUser);
+
+////////////////////////////////
 // save jars
-router.put('/jars', userController.saveUserJars);
+router.put('/:email/jars', (req, res, next) => {
+    console.log("PUT /:email/jars route hit");
+    console.log("Email parameter:", req.params.email);
+    next();
+  }, userController.saveUserJars);
 
 export default router;

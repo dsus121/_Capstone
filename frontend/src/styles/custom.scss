@@ -1,61 +1,156 @@
-// HOORAY ... Dawn learned a new thing
+// ensures custom variables override Bootstrap's defaults
+$enable-important-utilities: true;
 
-// custom palette (sorrell-brown is super close to Mocha Mousse, 2025 Pantone Color of the Year
-$seal-brown: #1d120e;
-$blue-lagoon: #015770;
-$sorrell-brown: #9e7967;
-$shilo: #e6c2b2;
-$solitude: #dadfe5;
+// custom theme colors
+$mocha: #a47864;    // main color (mocha-karma)
+$sage: #484d36;     // greenish (matcha-cookie)
+$silver: #9fa1a0;   // gray (fortune-silver)
+$cream: #dccfbf;    // light beige (vanilla-shortbread)
+$ocean: #015770;    // blueish (karma-ocean)
+$white: #f9f7f4;    // almost white (cosmic-whisper)
+$black: #1a1c1e;    // almost black (midnight-prophecy)
+$pink: #ff3864;     // vibrant accent (neon-nirvana)
+$teal: #2de2a6;     // turquoise (zen-zest)
+$orange: #f49d37;   // warm accent (karmic-burst)
 
-// override Bootstrap's variables
-$primary: $sorrell-brown;
-$secondary: $blue-lagoon;
-$success: $blue-lagoon;
-$info: $solitude;
-$warning: $shilo;
-$danger: $seal-brown;
+// IMPORTANT: override Bootstrap's default colors BEFORE importing Bootstrap
+$primary: $mocha;
+$secondary: $silver;
+$success: $sage;
+$info: $ocean;
+$warning: $orange;
+$danger: $pink;
+$light: $white;
+$dark: $black;
 
-// dark theme settings - likely needs adjusting still
-$body-bg: #252525;        // dark background
-$body-color: #e6e6e6;     // light text
-$dark: $seal-brown;
-$light: $solitude;
+// enable color modes (required for Bootstrap 5.3 color mode functionality)
+$color-mode-type: data;
 
-// card, modal, and other component backgrounds
-$card-bg: #333333;
-$modal-content-bg: #333333;
-$dropdown-bg: #333333;
-$dropdown-color: #e6e6e6;
-
-// borders
-$border-color: #444444;
-
-// form controls
-$input-bg: #454545;
-$input-color: #e6e6e6;
-$input-border-color: #555555;
-
-
-
-// tables
-$table-bg: #333333;
-$table-color: #e6e6e6;
-$table-border-color: #444444;
-
-// more of those sweet sweet custom color choices
-.navbar-custom {
-  background-color: $sorrell-brown; 
-  color: $solitude;
+// Create the color-mode variables (light is the default)
+@mixin theme-colors-variant($color-mode: 'light') {
+  @if $color-mode == 'light' {
+    --bs-body-color: #{$black};
+    --bs-body-color-rgb: #{red($black)}, #{green($black)}, #{blue($black)};
+    --bs-body-bg: #{$white};
+    --bs-body-bg-rgb: #{red($white)}, #{green($white)}, #{blue($white)};
+    
+    // Theme colors
+    --bs-primary: #{$mocha};
+    --bs-primary-rgb: #{red($mocha)}, #{green($mocha)}, #{blue($mocha)};
+    --bs-secondary: #{$silver};
+    --bs-secondary-rgb: #{red($silver)}, #{green($silver)}, #{blue($silver)};
+    --bs-success: #{$sage};
+    --bs-success-rgb: #{red($sage)}, #{green($sage)}, #{blue($sage)};
+    --bs-info: #{$ocean};
+    --bs-info-rgb: #{red($ocean)}, #{green($ocean)}, #{blue($ocean)};
+    --bs-warning: #{$orange};
+    --bs-warning-rgb: #{red($orange)}, #{green($orange)}, #{blue($orange)};
+    --bs-danger: #{$pink};
+    --bs-danger-rgb: #{red($pink)}, #{green($pink)}, #{blue($pink)};
+    --bs-light: #{$white};
+    --bs-light-rgb: #{red($white)}, #{green($white)}, #{blue($white)};
+    --bs-dark: #{$black};
+    --bs-dark-rgb: #{red($black)}, #{green($black)}, #{blue($black)};
+    
+    // Component variables
+    --bs-card-bg: #{lighten($cream, 5%)};
+    --bs-modal-bg: #{$white};
+    --bs-navbar-light-color: #{$white};
+    --bs-table-bg: #{$white};
+    --bs-table-border-color: #{lighten($silver, 15%)};
+    --bs-input-bg: #{$white};
+    --bs-input-border-color: #{lighten($mocha, 20%)};
+    --bs-input-focus-border-color: #{$mocha};
+    --bs-link-color: #{darken($mocha, 10%)};
+    --bs-link-hover-color: #{darken($mocha, 20%)};
+  } @else if $color-mode == 'dark' {
+    --bs-body-color: #{$white};
+    --bs-body-color-rgb: #{red($white)}, #{green($white)}, #{blue($white)};
+    --bs-body-bg: #{$black};
+    --bs-body-bg-rgb: #{red($black)}, #{green($black)}, #{blue($black)};
+    
+    // Theme colors - dark mode
+    --bs-primary: #{darken($mocha, 10%)};
+    --bs-primary-rgb: #{red(darken($mocha, 10%))}, #{green(darken($mocha, 10%))}, #{blue(darken($mocha, 10%))};
+    --bs-secondary: #{darken($silver, 20%)};
+    --bs-secondary-rgb: #{red(darken($silver, 20%))}, #{green(darken($silver, 20%))}, #{blue(darken($silver, 20%))};
+    --bs-success: #{darken($sage, 5%)};
+    --bs-success-rgb: #{red(darken($sage, 5%))}, #{green(darken($sage, 5%))}, #{blue(darken($sage, 5%))};
+    --bs-info: #{darken($ocean, 10%)};
+    --bs-info-rgb: #{red(darken($ocean, 10%))}, #{green(darken($ocean, 10%))}, #{blue(darken($ocean, 10%))};
+    --bs-warning: #{darken($orange, 10%)};
+    --bs-warning-rgb: #{red(darken($orange, 10%))}, #{green(darken($orange, 10%))}, #{blue(darken($orange, 10%))};
+    --bs-danger: #{darken($pink, 10%)};
+    --bs-danger-rgb: #{red(darken($pink, 10%))}, #{green(darken($pink, 10%))}, #{blue(darken($pink, 10%))};
+    --bs-light: #{$silver};
+    --bs-light-rgb: #{red($silver)}, #{green($silver)}, #{blue($silver)};
+    --bs-dark: #{$black};
+    --bs-dark-rgb: #{red($black)}, #{green($black)}, #{blue($black)};
+    
+    // Component variables - dark mode
+    --bs-card-bg: #{lighten($black, 10%)};
+    --bs-modal-bg: #{lighten($black, 5%)};
+    --bs-table-bg: #{lighten($black, 7%)};
+    --bs-table-border-color: #{$silver};
+    --bs-input-bg: #{lighten($black, 10%)};
+    --bs-input-border-color: #{$silver};
+    --bs-link-color: #{lighten($mocha, 15%)};
+    --bs-link-hover-color: #{lighten($mocha, 25%)};
+    
+    // Additional dark mode tweaks
+    --bs-navbar-dark-bg: #{darken($mocha, 15%)};
+  }
 }
 
+// Root variables application
+:root {
+  @include theme-colors-variant();
+  
+  @media (prefers-color-scheme: dark) {
+    &:not([data-bs-theme="light"]) {
+      @include theme-colors-variant('dark');
+    }
+  }
+}
+
+// Explicitly set dark mode when data-bs-theme="dark"
+[data-bs-theme="dark"] {
+  @include theme-colors-variant('dark');
+}
+
+// IMPORT BOOTSTRAP AFTER DEFINING YOUR CUSTOM VARIABLES
 // import Bootstrap (yes, the @ is the right thing here)
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-// additional custom styles
-// .btn-primary {
-//   color: white;
-// }
+// additional custom styles AFTER Bootstrap import for higher specificity
+.navbar-light {
+  background-color: var(--bs-primary);
+  color: var(--bs-light);
+}
 
-// .btn-info, .btn-warning {
-//   color: black;
-// }
+.card {
+  background-color: var(--bs-card-bg);
+  border-color: var(--bs-secondary);
+}
+
+.modal-content {
+  background-color: var(--bs-modal-bg);
+}
+
+.form-control:focus {
+  border-color: var(--bs-input-focus-border-color);
+}
+
+// Override any remaining default Bootstrap colors if needed
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: darken($mocha, 10%);
+  border-color: darken($mocha, 10%);
+}
+
+
+

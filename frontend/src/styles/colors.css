@@ -1,16 +1,15 @@
-/* colors.css */
-
 /* not using this at all since I learned about scss in Bootstrap */
 
 :root {
-    --mocha-mousse: #a47864;
-    --chocolate: #200c05;
-    --licorice: #070504;
-    --caramel: #ca7e44;
-    --cream: #f0cfbc;
-    --frosting: #FFF0D7;
-    --caput-mortuum: #63291e;
-    --gold: #FFD700;
-    --blue-lagoon: #015770;
-  }
+  --mocha: #a47864;    /* main color (mocha-karma) */
+  --sage: #484d36;     /* greenish (matcha-cookie) */
+  --silver: #9fa1a0;   /* gray (fortune-silver) */
+  --cream: #dccfbf;    /* light beige (vanilla-shortbread) */
+  --ocean: #015770;    /* blueish (karma-ocean) */
+  --white: #f9f7f4;    /* almost white (cosmic-whisper) */
+  --black: #1a1c1e;    /* almost black (midnight-prophecy) */
+  --pink: #ff3864;     /* vibrant accent (neon-nirvana) */
+  --teal: #2de2a6;     /* turquoise (zen-zest) */
+  --orange: #f49d37;   /* warm accent (karmic-burst) */
+}
   

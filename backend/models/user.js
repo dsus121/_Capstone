@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
       {
         causeType: { 
           type: String,
-          enum: ['Health', 'Education', 'Environment', 'Animal Welfare', 'Community']
+          enum: ['cr', 'ea', 'hh', 'pde']
         },
         organizationId: { 
           type: String  // store the organization ID from the API

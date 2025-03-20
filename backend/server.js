@@ -15,27 +15,33 @@ const port = process.env.PORT || 8080 // Use the PORT variable from .env
 // consistently use the correct variable name for the port ... use 'port'
 
 app.use(express.json())
-app.use(cors()) // middleware for handling cross-origin requests
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+})); // middleware for handling cross-origin requests
 
-// the /api prefix typically signifies a logical grouping of routes that 
-// belong to a specific section of your API (in this case, user-related 
-// routes), which is why it’s a common practice to use '/api' as a base 
-// route in RESTful APIs.
-app.use('/api/users', userRoutes);  // user routes under the "/api" path
-app.use('/api/quiz', quizRoutes); 
+app.use((req, res, next) => {
+    console.log(`Request received: ${req.method} ${req.url}`);
+    next();
+  });
+
+// Define API routes
+app.use('/api/users', userRoutes);
+app.use('/api/quiz', quizRoutes);
 app.use('/api/organizations', orgsRoutes);
-
-app.use('/api/products', productRoutes);  // product routes 
-
-
-
+app.use('/api/products', productRoutes);
 
 // testing the server   
 app.get('/', (req, res) => {
     res.send('Hello World!')
 });
 
-// handle undefined routes
+// app.get('/api/users', (req, res) => {
+//     res.send('Hello from users!')
+// });
+
+// Serve frontend (fallback route)
 app.use((req, res) => {
     res.status(404).json({ message: `Route ${req.originalUrl} not found` });
   });

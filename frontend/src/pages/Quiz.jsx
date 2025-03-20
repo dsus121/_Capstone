@@ -224,7 +224,7 @@ console.error('Error submitting quiz:', err);
 
       <div className="d-flex justify-content-between mt-4">
         <Button 
-          variant="outline-secondary" 
+          variant="outline-primary" 
           onClick={goToPreviousQuestion}
           disabled={currentQuestionIndex === 0}
         >
@@ -241,7 +241,7 @@ console.error('Error submitting quiz:', err);
           </Button>
         ) : (
           <Button 
-            variant="warning" 
+            variant="secondary" 
             onClick={handleSubmit}
             disabled={selectedAnswers.includes(null)}
           >

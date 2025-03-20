@@ -1,0 +1,71 @@
+@import '../styles/colors.css';
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    user-select: none;
+  }
+  
+  .dropdown-header {
+    /* display: flex;
+    justify-content: space-between; */
+    /* align-items: center; */
+    padding: 8px 12px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    /* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+  }
+  
+  .dropdown-header:hover {
+    border-color: #a0a0a0;
+  }
+  
+  .dropdown-header.placeholder {
+    color: var(--silver);
+    width: 90%;
+    cursor: default;
+  }
+  
+  .dropdown-arrow {
+    font-size: 0.8em;
+    color: #6c757d;
+  }
+  
+  .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--black);
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-top: 2px;
+  }
+  
+  /* dreaded blue spinner will DIE */
+  .dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .dropdown-option:hover {
+    background-color: var(--ocean);
+  }
+  
+  .dropdown-option.selected {
+    /* replacing HorribleBlue with MY preferred color */
+    background-color: var(--silver);
+    color: var(--silver);
+    font-weight: 500;
+  }
+
+  /* .custom-dropdown .dropdown-header {
+    display: none !important;
+  } */
