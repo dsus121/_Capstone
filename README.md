@@ -1,5 +1,22 @@
 # CAPSTONE - Cookie Jar Karma (CJK)
 
+## So Many Things Yet To Do
+This application is far from complete. The UserDashboard is underdeveloped. The 
+AdminDashboard is barely a page at all. I need to pull random questions into
+the quiz, switch to real authentication, and somehow check the API with the
+state's API on a regular basis.
+
+## Interesting Items Learned Along the Way
+1. Bootstrap is a sneaky beast
+2. One task, one commit <-- I STILL struggle with this
+3. CSS is super fun until it's not
+4. If the file is longer than 100 lines, try to split it 
+5. Custom hooks are scary at first, but they really aren't
+6. Sometimes parsing the backend into server / controller / routes just means you 
+now have three places to check every single time a route doesn't work
+7. Postman and Thunder Client really are my friends
+8. I forget what eight was for
+
 ## Capstone Objective
 Create a full-stack web application using **MongoDB, Express, React, and Node (MERN).**
 
@@ -85,7 +102,7 @@ As you finish building your application, ask yourself the following questions:
 ## (9%) Database
 
 - [X] Use MongoDB to create a database for your application. **(5%)**
-- [ ] Apply appropriate indexes to your database collections. **(2%)**
+- [X] Apply appropriate indexes to your database collections. **(2%)**
 - [X] Create reasonable schemas for your data by following data modeling best practices. **(2%)**
 
 ---
@@ -94,7 +111,7 @@ As you finish building your application, ask yourself the following questions:
 
 - [X] Create a RESTful API using Node and Express.
   - *For the purposes of this project, you may forgo the HATEOAS aspect of REST APIs.* **(7%)**
-- [ ] Include API routes for all four CRUD operations. **(5%)**
+- [X] Include API routes for all four CRUD operations. **(5%)**
 - [X] Utilize the native MongoDB driver or Mongoose to interface with your database. **(5%)**
 - [X] Include at least one form of user authentication/authorization within the application. **(2%)**
 
@@ -117,12 +134,6 @@ As you finish building your application, ask yourself the following questions:
 - [ ] Discuss what you have learned through the development of the application. **(1%)**
 - [ ] Discuss additional features that could be added to the application in the future. **(1%)**
 
-
-**The following section is NOT included in the requirements for this project.** Completing this section is NOT required. This section will NOT negatively impact your grade if left unfinished.
-
-This section is intended for learners looking to go the extra mile by showcasing additional skills such as project management and optional technologies like TypeScript.
-
-You must complete **ALL** other requirements to receive credit for this section; however, this extra credit will not be included if you have already received the maximum 100% grade. The extra credit can only offset points lost elsewhere.
 
 ## (5%) Extra Credit
 
